@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  mongodb:
+    image: mongo
+    command: mongod --port 27778 --bind_ip_all --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27778:27778"
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+
+  data-conversion:
+    build: ./ConversionScript
+    depends_on:
+      - mysql
+      - mongodb
+
+#  api:
+#    build: ./API
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - mongodb
+
+#  web-application:
+#    build: ./orders-webui
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - mongodb
+#      - api
+
+volumes:
+  mongo_data:
+  mysql_data:

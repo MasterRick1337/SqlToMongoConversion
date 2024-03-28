@@ -28,21 +28,6 @@ services:
       - mysql
       - mongodb
 
-#  api:
-#    build: ./API
-#    ports:
-#      - "8000:8000"
-#    depends_on:
-#      - mongodb
-
-#  web-application:
-#    build: ./orders-webui
-#    ports:
-#      - "3000:3000"
-#    depends_on:
-#      - mongodb
-#      - api
-
 volumes:
   mongo_data:
   mysql_data:

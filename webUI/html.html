@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Viewer</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+    <h1>Orders Viewer</h1>
+    <label for="category">Select Category:</label>
+    <select id="category">
+        <option value="categories">Categories</option>
+        <option value="customers">Customers</option>
+        <option value="employees">Employees</option>
+        <option value="order_details">Order Details</option>
+        <option value="orders">Orders</option>
+        <option value="products">Products</option>
+        <option value="shippers">Shippers</option>
+        <option value="suppliers">Suppliers</option>
+    </select>
+    <button onclick="getData()">Get Data</button>
+    <div id="filterOptions"></div>
+    <input type="text" id="filterInput" placeholder="Enter filter text">
+    <button onclick="applyFilter()">Apply Filter</button>
+    <table id="dataTable">
+        <thead id="tableHeaders"></thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
